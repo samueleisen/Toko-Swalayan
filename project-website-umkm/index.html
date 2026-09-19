@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#f59e0b" />
+
+  <!-- SEO -->
+  <title>Toko Rini | Sembako & Kebutuhan Rumah Tangga Keluarga</title>
+  <meta name="description" content="Toko Rini – pusat belanja sembako, bahan dapur, snack, dan perlengkapan rumah tangga untuk keluarga. Harga wajar, pelayanan ramah, pesan via WhatsApp." />
+  <meta name="keywords" content="toko sembako, kelontong, belanja sembako, kebutuhan rumah tangga, pesan WhatsApp, toko rini, minyak goreng, beras, gula" />
+  <meta name="author" content="Toko Rini" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Toko Rini – Sembako & Kebutuhan Keluarga" />
+  <meta property="og:description" content="Belanja sembako dan kebutuhan rumah tangga dengan mudah. Pesan langsung via WhatsApp!" />
+  <meta property="og:locale"      content="id_ID" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://tokorini.id" />
+
+  <!-- Favicon emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     TOAST CONTAINER
+════════════════════════════════════════════════════════════ -->
+<div class="toast-container" id="toastContainer" aria-live="polite" aria-label="Notifikasi"></div>
+
+<!-- ════════════════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════════════════ -->
+<header class="navbar" id="mainNavbar" role="banner">
+  <div class="navbar__inner">
+    <div class="navbar__brand">
+      <div class="navbar__logo-icon" aria-hidden="true">🏪</div>
+      <div class="navbar__brand-text">
+        <span class="navbar__brand-name">Toko Rini</span>
+        <span class="navbar__brand-sub">Toko Sembako Keluarga</span>
+      </div>
+    </div>
+    <button
+      class="navbar__wa-btn"
+      id="navWaBtn"
+      onclick="sendToWhatsApp('Halo Toko Rini! 👋 Saya ingin tanya stok dan harga sembako hari ini. Terima kasih!')"
+      aria-label="Hubungi via WhatsApp"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <span id="navStatus">Pesan WA</span>
+    </button>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════════════════════ -->
+<main id="mainContent">
+<section class="hero" id="beranda" aria-labelledby="heroTitle">
+  <div class="hero__inner">
+
+    <!-- Status Bar -->
+    <div class="hero__status-bar">
+      <span class="hero__greeting" id="heroGreeting">Selamat datang!</span>
+      <span class="badge badge--open" id="heroStatusBadge">
+        <span>🟢</span> Memuat status...
+      </span>
+    </div>
+
+    <!-- Visual Card -->
+    <div class="hero__visual">
+      <span class="hero__store-icon" role="img" aria-label="Toko">🏪</span>
+      <h1 class="hero__title" id="heroTitle">Toko Rini</h1>
+      <p class="hero__tagline">Pusat Belanja Sembako &amp; Kebutuhan Rumah Tangga Keluarga</p>
+
+      <div class="hero__cta-group">
+        <button
+          class="btn btn--wa"
+          id="heroCTA1"
+          onclick="sendToWhatsApp('Halo Toko Rini! 🛒 Saya ingin pesan sembako hari ini. Bisa tolong bantu informasi stok dan harga? Terima kasih! 🙏')"
+          aria-label="Pesan Cepat via WhatsApp"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Pesan Cepat Tetangga 💬
+        </button>
+        <button
+          class="btn btn--outline"
+          id="heroCTA2"
+          data-scroll="produkSection"
+          style="color:rgba(255,255,255,0.9);border-color:rgba(255,255,255,0.4);"
+          aria-label="Lihat produk kami"
+        >
+          🛍️ Lihat Produk Kami
+        </button>
+      </div>
+    </div>
+
+    <!-- Statistik Singkat -->
+    <div class="hero__stats" role="list" aria-label="Statistik toko">
+      <div class="hero__stat" role="listitem">
+        <div class="hero__stat-value">200+</div>
+        <div class="hero__stat-label">Produk Tersedia</div>
+      </div>
+      <div class="hero__stat" role="listitem">
+        <div class="hero__stat-value">5⭐</div>
+        <div class="hero__stat-label">Rating Warga</div>
+      </div>
+      <div class="hero__stat" role="listitem">
+        <div class="hero__stat-value">±2km</div>
+        <div class="hero__stat-label">Area Antar</div>
+      </div>
+    </div>
+
+    <div class="hero__scroll-hint" aria-hidden="true">↓ Gulir untuk lihat lebih banyak</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     QUICK ACCESS
+════════════════════════════════════════════════════════════ -->
+<nav class="quick-access" aria-label="Pintasan kategori produk">
+  <div class="quick-access__inner">
+    <button class="qa-chip active" data-cat="semua" aria-pressed="true" aria-label="Semua produk">
+      <div class="qa-chip__icon">🛒</div>
+      <span class="qa-chip__label">Semua</span>
+    </button>
+    <button class="qa-chip" data-cat="sembako" aria-pressed="false" aria-label="Kategori Sembako">
+      <div class="qa-chip__icon">🌾</div>
+      <span class="qa-chip__label">Sembako</span>
+    </button>
+    <button class="qa-chip" data-cat="dapur" aria-pressed="false" aria-label="Kategori Dapur">
+      <div class="qa-chip__icon">🍳</div>
+      <span class="qa-chip__label">Dapur</span>
+    </button>
+    <button class="qa-chip" data-cat="snack" aria-pressed="false" aria-label="Kategori Snack">
+      <div class="qa-chip__icon">☕</div>
+      <span class="qa-chip__label">Snack</span>
+    </button>
+    <button class="qa-chip" data-cat="rumah" aria-pressed="false" aria-label="Kategori Rumah Tangga">
+      <div class="qa-chip__icon">🏠</div>
+      <span class="qa-chip__label">Rumahan</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════
+     TENTANG KAMI
+════════════════════════════════════════════════════════════ -->
+<section class="about section-pad" id="tentangKami" aria-labelledby="aboutTitle">
+  <div class="container">
+    <p class="section-label reveal" aria-hidden="true">🏘️ Kisah Kami</p>
+    <h2 class="section-title reveal reveal-delay-1" id="aboutTitle">
+      Tetangga yang <span>Bisa Dipercaya</span>
+    </h2>
+
+    <div class="about__story-card reveal reveal-delay-2">
+      <p class="about__story-text">
+        Kami bukan sekadar toko biasa. Sejak pertama berdiri,
+        <strong>Toko Rini</strong> hadir sebagai bagian dari kehidupan
+        sehari-hari warga lingkungan ini — tempat ibu-ibu bertemu sambil belanja,
+        tempat bapak-bapak titip pesanan sebelum bekerja, dan tempat anak-anak
+        membeli jajan sore hari.
+        <br><br>
+        Kami percaya bahwa <strong>berbelanja bukan hanya tentang harga</strong>,
+        tapi tentang rasa aman, percaya, dan guyub bersama tetangga. Itulah
+        mengapa setiap produk kami pilih dengan teliti dan setiap pelayanan
+        kami berikan dari hati.
+      </p>
+    </div>
+
+    <!-- Pilar Nilai -->
+    <div class="values-grid" role="list" aria-label="Nilai-nilai toko">
+      <article class="value-card reveal" role="listitem">
+        <div class="value-card__icon value-card__icon--amber" aria-hidden="true">🤝</div>
+        <div>
+          <h3 class="value-card__title">Amanah &amp; Jujur</h3>
+          <p class="value-card__desc">
+            Timbangan tepat, harga jelas, produk terjamin. Tidak ada yang kami
+            sembunyikan dari pelanggan kami.
+          </p>
+        </div>
+      </article>
+      <article class="value-card reveal reveal-delay-1" role="listitem">
+        <div class="value-card__icon value-card__icon--green" aria-hidden="true">💚</div>
+        <div>
+          <h3 class="value-card__title">Harga Wajar Sahabat Warga</h3>
+          <p class="value-card__desc">
+            Satu harga untuk semua. Tidak ada selisih tersembunyi — harga
+            yang Anda lihat adalah harga yang Anda bayar.
+          </p>
+        </div>
+      </article>
+      <article class="value-card reveal reveal-delay-2" role="listitem">
+        <div class="value-card__icon value-card__icon--slate" aria-hidden="true">🏘️</div>
+        <div>
+          <h3 class="value-card__title">Pelayanan Cepat &amp; Guyub</h3>
+          <p class="value-card__desc">
+            Kami kenal nama Anda, kami tahu kebutuhan Anda. Pelayanan hangat
+            bukan sekadar janji — itu identitas kami.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     PRODUK UNGGULAN
+════════════════════════════════════════════════════════════ -->
+<section class="products section-pad" id="produkSection" aria-labelledby="produkTitle">
+  <div class="container">
+    <p class="section-label reveal" aria-hidden="true">🛒 Belanja Sekarang</p>
+    <h2 class="section-title reveal reveal-delay-1" id="produkTitle">
+      Produk <span>Pilihan Hari Ini</span>
+    </h2>
+    <p class="section-desc reveal reveal-delay-2" style="margin-bottom:1.5rem;">
+      Pilih produk yang Anda inginkan, lalu kirim langsung ke WhatsApp toko kami.
+    </p>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar reveal" role="tablist" aria-label="Filter kategori produk">
+      <button class="filter-btn active" data-cat="semua"   onclick="setFilter('semua')"   role="tab" aria-selected="true"  id="filter-semua">🛒 Semua</button>
+      <button class="filter-btn"        data-cat="sembako" onclick="setFilter('sembako')" role="tab" aria-selected="false" id="filter-sembako">🌾 Sembako</button>
+      <button class="filter-btn"        data-cat="dapur"   onclick="setFilter('dapur')"   role="tab" aria-selected="false" id="filter-dapur">🍳 Dapur</button>
+      <button class="filter-btn"        data-cat="snack"   onclick="setFilter('snack')"   role="tab" aria-selected="false" id="filter-snack">☕ Snack</button>
+      <button class="filter-btn"        data-cat="rumah"   onclick="setFilter('rumah')"   role="tab" aria-selected="false" id="filter-rumah">🏠 Rumahan</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="products-grid" id="productsGrid" aria-label="Daftar produk" aria-live="polite">
+      <!-- Di-render oleh JavaScript -->
+      <p style="color:var(--color-text-muted);font-size:var(--text-sm);text-align:center;padding:2rem;grid-column:1/-1;">
+        Memuat produk...
+      </p>
+    </div>
+
+    <!-- CTA Pesan via WA jika tidak ada item -->
+    <div style="margin-top:1.5rem;" class="reveal">
+      <button
+        class="btn btn--wa btn--full"
+        id="bottomWaBtn"
+        onclick="sendToWhatsApp('Halo Toko Rini! 🛒 Saya ingin tanya daftar produk lengkap dan harga hari ini. Ada produk yang tidak tercantum di website? Terima kasih!')"
+        aria-label="Tanya produk lainnya via WhatsApp"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Tanya Produk Lainnya via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     LAYANAN
+════════════════════════════════════════════════════════════ -->
+<section class="services section-pad" id="layananSection" aria-labelledby="layananTitle">
+  <div class="container">
+    <p class="section-label reveal" aria-hidden="true">⭐ Layanan Kami</p>
+    <h2 class="section-title reveal reveal-delay-1" id="layananTitle">
+      Mudah, Cepat, <span>Terpercaya</span>
+    </h2>
+
+    <!-- Belanja Langsung -->
+    <article class="service-card reveal">
+      <div class="service-card__icon service-card__icon--amber" aria-hidden="true">🏪</div>
+      <div style="flex:1;">
+        <h3 class="service-card__title">Belanja Langsung di Toko</h3>
+        <p class="service-card__desc">
+          Kunjungi toko kami dan nikmati suasana belanja yang hangat. Semua
+          produk tersusun rapi dan mudah ditemukan.
+        </p>
+        <div class="service-card__steps" aria-label="Langkah berbelanja">
+          <div class="service-step"><span class="service-step__num">1</span> Datang ke toko kami</div>
+          <div class="service-step"><span class="service-step__num">2</span> Pilih produk yang Anda butuhkan</div>
+          <div class="service-step"><span class="service-step__num">3</span> Bayar tunai, transfer, atau QRIS</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Titip Pesan WA -->
+    <article class="service-card reveal reveal-delay-1">
+      <div class="service-card__icon service-card__icon--green" aria-hidden="true">📱</div>
+      <div style="flex:1;">
+        <h3 class="service-card__title">Titip Pesan via WhatsApp</h3>
+        <p class="service-card__desc">
+          Tidak sempat ke toko? Kirim pesan WhatsApp dan pesanan Anda
+          akan kami siapkan. Ambil atau antar ke rumah!
+        </p>
+        <div class="service-card__steps" aria-label="Langkah pesan via WhatsApp">
+          <div class="service-step"><span class="service-step__num">1</span> Pilih produk di website ini</div>
+          <div class="service-step"><span class="service-step__num">2</span> Klik "Kirim ke WhatsApp Toko"</div>
+          <div class="service-step"><span class="service-step__num">3</span> Konfirmasi &amp; bayar saat terima</div>
+        </div>
+        <div style="margin-top:0.75rem;">
+          <button
+            class="btn btn--wa btn--sm"
+            id="serviceWaBtn"
+            onclick="sendToWhatsApp('Halo! Saya ingin pesan sembako via WhatsApp. Bisa tolong bantu? 🙏')"
+            aria-label="Mulai pesan via WhatsApp"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Mulai Pesan Sekarang
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Paket Sembako -->
+    <article class="service-card reveal reveal-delay-2">
+      <div class="service-card__icon service-card__icon--slate" aria-hidden="true">🎁</div>
+      <div style="flex:1;">
+        <h3 class="service-card__title">Paket Sembako Berkah</h3>
+        <p class="service-card__desc">
+          Paket bundling bahan pokok dengan harga spesial. Cocok untuk
+          kebutuhan bulanan, santunan, atau kegiatan lingkungan RT/RW.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+          <span class="badge badge--amber">📦 Paket Mini</span>
+          <span class="badge badge--amber">📦 Paket Keluarga</span>
+          <span class="badge badge--green">❤️ Paket Donasi</span>
+        </div>
+        <div style="margin-top:0.75rem;">
+          <button
+            class="btn btn--outline btn--sm"
+            id="paketInfoBtn"
+            onclick="sendToWhatsApp('Halo Toko Rini! 🎁 Saya tertarik dengan Paket Sembako Toko Rini. Bisa minta info harga dan isinya? Terima kasih!')"
+            aria-label="Tanya info paket sembako"
+          >
+            💬 Tanya Info Paket
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     TESTIMONI WARGA
+════════════════════════════════════════════════════════════ -->
+<section class="testimonials section-pad" id="testiSection" aria-labelledby="testiTitle">
+  <div class="container">
+    <p class="section-label reveal" aria-hidden="true">💬 Kata Mereka</p>
+    <h2 class="section-title reveal reveal-delay-1" id="testiTitle">
+      Warga yang <span>Sudah Percaya</span>
+    </h2>
+    <p class="section-desc reveal reveal-delay-2" style="margin-bottom:1.5rem;">
+      Lebih dari sekadar pelanggan — mereka adalah tetangga kami.
+    </p>
+
+    <div class="testimonials-scroll reveal" role="list" aria-label="Ulasan pelanggan">
+
+      <article class="testi-card" role="listitem">
+        <div class="testi-card__stars" aria-label="5 bintang">⭐⭐⭐⭐⭐</div>
+        <p class="testi-card__text">
+          "Sudah 3 tahun belanja di sini. Berasnya selalu segar, harganya juga
+          stabil tidak goyang-goyang. Pemiliknya ramah sekali!"
+        </p>
+        <div class="testi-card__user">
+          <div class="testi-card__avatar" style="background:#fde68a;" aria-hidden="true">👩</div>
+          <div>
+            <div class="testi-card__name">Bu Sari Wulandari</div>
+            <div class="testi-card__loc">Warga RT 03</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card" role="listitem">
+        <div class="testi-card__stars" aria-label="5 bintang">⭐⭐⭐⭐⭐</div>
+        <p class="testi-card__text">
+          "Pesan via WhatsApp pagi, siang sudah diantar ke depan pintu.
+          Benar-benar membantu sekali apalagi kalau lagi sibuk kerja dari rumah."
+        </p>
+        <div class="testi-card__user">
+          <div class="testi-card__avatar" style="background:#d1fae5;" aria-hidden="true">👨</div>
+          <div>
+            <div class="testi-card__name">Pak Deden Prasetyo</div>
+            <div class="testi-card__loc">Pelanggan WA</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card" role="listitem">
+        <div class="testi-card__stars" aria-label="5 bintang">⭐⭐⭐⭐⭐</div>
+        <p class="testi-card__text">
+          "Harganya jauh lebih murah dibanding minimarket! Dan yang paling
+          penting produknya lengkap, dari sembako sampai kebutuhan mandi ada."
+        </p>
+        <div class="testi-card__user">
+          <div class="testi-card__avatar" style="background:#fce7f3;" aria-hidden="true">👩</div>
+          <div>
+            <div class="testi-card__name">Mbak Lestari</div>
+            <div class="testi-card__loc">Warga RT 07</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card" role="listitem">
+        <div class="testi-card__stars" aria-label="4 bintang">⭐⭐⭐⭐⭐</div>
+        <p class="testi-card__text">
+          "Beli Paket Sembako untuk arisan RT kemarin, pelayanannya cepat
+          dan packing rapi. Warga-warga senang semua. Rekomen banget!"
+        </p>
+        <div class="testi-card__user">
+          <div class="testi-card__avatar" style="background:#e0e7ff;" aria-hidden="true">👨</div>
+          <div>
+            <div class="testi-card__name">Pak RW Sutrisno</div>
+            <div class="testi-card__loc">Ketua RW 02</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     INFO & KONTAK
+════════════════════════════════════════════════════════════ -->
+<section class="info section-pad" id="kontakSection" aria-labelledby="kontakTitle">
+  <div class="container">
+    <p class="section-label reveal" aria-hidden="true">📍 Temukan Kami</p>
+    <h2 class="section-title reveal reveal-delay-1" id="kontakTitle">
+      Lokasi &amp; <span>Jam Operasional</span>
+    </h2>
+
+    <!-- Peta Placeholder -->
+    <div class="map-placeholder reveal">
+      <div class="map-placeholder__icon" aria-hidden="true">🗺️</div>
+      <p class="map-placeholder__text">
+        <strong>Toko Rini</strong><br>
+        Jl. [Nama Jalan], No. [Nomor], RT [XX]/RW [XX]<br>
+        [Nama Kelurahan], [Nama Kecamatan]<br>
+        [Nama Kota/Kabupaten], [Kode Pos]
+      </p>
+      <button
+        class="btn btn--outline btn--sm"
+        id="mapBtn"
+        onclick="sendToWhatsApp('Halo! Bisa tolong kirim lokasi Google Maps toko? Terima kasih! 🗺️')"
+        aria-label="Minta pin lokasi via WhatsApp"
+      >
+        📍 Minta Pin Lokasi via WA
+      </button>
+    </div>
+
+    <!-- Jam Operasional -->
+    <div class="info-card reveal">
+      <h3 class="info-card__title">
+        <span aria-hidden="true">🕐</span> Jam Operasional
+      </h3>
+      <div class="hours-table" id="hoursTable" role="list" aria-label="Jam operasional per hari">
+        <!-- Di-render oleh JavaScript -->
+      </div>
+    </div>
+
+    <!-- Kontak -->
+    <div class="info-card reveal reveal-delay-1">
+      <h3 class="info-card__title">
+        <span aria-hidden="true">📞</span> Hubungi Kami
+      </h3>
+      <div class="contact-list">
+        <div class="contact-item">
+          <div class="contact-item__icon" aria-hidden="true">📱</div>
+          <div class="contact-item__info">
+            <div class="contact-item__label">WhatsApp Resmi</div>
+            <div class="contact-item__value">Langsung ke Chat Toko</div>
+          </div>
+          <button
+            class="btn btn--wa btn--sm"
+            id="contactWaBtn"
+            onclick="sendToWhatsApp('Halo Toko Rini! Saya ingin menghubungi toko. 😊')"
+            aria-label="Buka Chat via WhatsApp"
+          >Buka Chat</button>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__icon" aria-hidden="true">🏪</div>
+          <div class="contact-item__info">
+            <div class="contact-item__label">Kunjungi Toko</div>
+            <div class="contact-item__value">Jl. [Alamat Toko]</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__icon" aria-hidden="true">💳</div>
+          <div class="contact-item__info">
+            <div class="contact-item__label">Metode Pembayaran</div>
+            <div class="contact-item__value">Tunai · Transfer · QRIS</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__icon" aria-hidden="true">🛵</div>
+          <div class="contact-item__info">
+            <div class="contact-item__label">Layanan Antar</div>
+            <div class="contact-item__value">Radius ±2 km · Min. Rp 50.000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════════════════ -->
+<section class="faq section-pad" id="faqSection" aria-labelledby="faqTitle">
+  <div class="container">
+    <p class="section-label reveal" aria-hidden="true">❓ Pertanyaan Umum</p>
+    <h2 class="section-title reveal reveal-delay-1" id="faqTitle">
+      Yang Sering <span>Ditanyakan</span>
+    </h2>
+
+    <div class="reveal reveal-delay-2" role="list" aria-label="FAQ">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" id="faq1-btn" aria-controls="faq1-answer">
+          <span>Apakah ada layanan antar ke rumah?</span>
+          <span class="faq-question__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-btn">
+          Ya! Kami melayani antar dalam radius ±2 km dari toko dengan minimum
+          pembelian Rp 50.000. Hubungi kami via WhatsApp untuk konfirmasi
+          ketersediaan dan jadwal pengantaran.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" id="faq2-btn" aria-controls="faq2-answer">
+          <span>Bagaimana cara pesan via WhatsApp?</span>
+          <span class="faq-question__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-btn">
+          Sangat mudah! Pilih produk yang Anda inginkan di halaman ini,
+          klik tombol "Tambah Pesanan", lalu klik "Kirim ke WhatsApp Toko".
+          Pesan belanja Anda akan otomatis tersusun rapi dan terkirim ke WhatsApp kami.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" id="faq3-btn" aria-controls="faq3-answer">
+          <span>Apakah bisa bayar pakai QRIS?</span>
+          <span class="faq-question__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-btn">
+          Tentu saja! Kami menerima pembayaran tunai, transfer bank, dan
+          QRIS. Untuk pembelian online via WA, konfirmasi pembayaran
+          dapat dilakukan via transfer atau QRIS sebelum pengiriman.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" id="faq4-btn" aria-controls="faq4-answer">
+          <span>Apakah harga di website selalu update?</span>
+          <span class="faq-question__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4-answer" role="region" aria-labelledby="faq4-btn">
+          Kami berusaha memperbarui harga secara rutin. Namun karena
+          harga sembako bisa berfluktuasi, harga akhir akan dikonfirmasi
+          saat Anda menghubungi kami via WhatsApp sebelum transaksi selesai.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" id="faq5-btn" aria-controls="faq5-answer">
+          <span>Apakah ada Paket Sembako untuk donasi/santunan?</span>
+          <span class="faq-question__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5-answer" role="region" aria-labelledby="faq5-btn">
+          Ada! Kami memiliki Paket Sembako Berkah khusus untuk kegiatan
+          sosial, donasi, atau santunan. Isi paket dan harga dapat
+          disesuaikan dengan kebutuhan dan anggaran Anda. Hubungi kami
+          untuk mendapatkan penawaran spesial.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer class="footer" id="footerSection" role="contentinfo">
+  <div class="container">
+    <div class="footer__brand">
+      <div class="footer__logo" aria-hidden="true">🏪</div>
+      <div>
+        <div class="footer__name">Toko Rini</div>
+        <div class="footer__sub">Pusat Belanja Sembako Keluarga</div>
+      </div>
+    </div>
+
+    <p class="footer__desc">
+      Toko sembako dan kebutuhan rumah tangga keluarga yang hangat, jujur, dan terpercaya.
+      Melayani warga dengan sepenuh hati sejak hari pertama.
+    </p>
+
+    <div class="footer__wa-cta" role="complementary" aria-label="Ajakan pesan via WhatsApp">
+      <p>Ada pertanyaan atau ingin pesan? Kami siap membantu! 😊</p>
+      <button
+        class="btn btn--wa"
+        id="footerWaBtn"
+        onclick="sendToWhatsApp('Halo Toko Rini! 👋 Saya ingin bertanya tentang produk dan layanan toko. Bisa bantu? Terima kasih!')"
+        aria-label="Hubungi toko via WhatsApp"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Hubungi via WhatsApp
+      </button>
+    </div>
+
+    <div class="footer__links" role="navigation" aria-label="Tautan footer">
+      <div>
+        <div class="footer__link-group-title">Navigasi</div>
+        <span class="footer__link" data-scroll="beranda" role="button" tabindex="0">Beranda</span>
+        <span class="footer__link" data-scroll="tentangKami" role="button" tabindex="0">Tentang Kami</span>
+        <span class="footer__link" data-scroll="produkSection" role="button" tabindex="0">Produk</span>
+        <span class="footer__link" data-scroll="layananSection" role="button" tabindex="0">Layanan</span>
+      </div>
+      <div>
+        <div class="footer__link-group-title">Informasi</div>
+        <span class="footer__link" data-scroll="testiSection" role="button" tabindex="0">Testimoni</span>
+        <span class="footer__link" data-scroll="kontakSection" role="button" tabindex="0">Kontak & Lokasi</span>
+        <span class="footer__link" data-scroll="faqSection" role="button" tabindex="0">FAQ</span>
+      </div>
+    </div>
+
+    <hr class="footer__divider" />
+
+    <div class="footer__bottom">
+      <p>© 2024 Toko Rini. Semua hak dilindungi.</p>
+      <p style="margin-top:0.25rem;">
+        Dibangun dengan ❤️ untuk warga lingkungan tercinta.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</main><!-- /mainContent -->
+
+<!-- ════════════════════════════════════════════════════════════
+     FLOATING ACTION BUTTON (KERANJANG WA)
+════════════════════════════════════════════════════════════ -->
+<div class="cart-fab" id="cartFAB" role="region" aria-label="Keranjang belanja">
+  <button
+    class="cart-fab__btn"
+    id="cartFABBtn"
+    onclick="openCart()"
+    aria-label="Buka keranjang belanja WhatsApp"
+  >
+    🛒 Keranjang Pesan
+    <span class="cart-fab__count" id="cartCount" aria-label="Jumlah item">0</span>
+  </button>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     MODAL KERANJANG BELANJA
+════════════════════════════════════════════════════════════ -->
+<div
+  class="modal-overlay"
+  id="cartModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cartModalTitle"
+>
+  <div class="modal">
+    <div style="padding:0.75rem 1rem 0;">
+      <div class="modal__drag-handle" aria-hidden="true"></div>
+    </div>
+    <div class="modal__header">
+      <h2 class="modal__title" id="cartModalTitle">🛒 Keranjang Pesan WA</h2>
+      <button class="modal__close" onclick="closeCart()" aria-label="Tutup keranjang">✕</button>
+    </div>
+
+    <div class="modal__body" id="cartBody">
+      <div class="cart-empty">
+        <div class="cart-empty__icon" aria-hidden="true">🛒</div>
+        <p>Keranjang belanja Anda kosong.<br>Pilih produk dulu, yuk!</p>
+      </div>
+    </div>
+
+    <div class="modal__footer">
+      <div class="cart-summary" role="status" aria-live="polite">
+        <span class="cart-summary__label">Estimasi Total</span>
+        <span class="cart-summary__total" id="cartTotal">Rp 0</span>
+      </div>
+      <button
+        class="btn btn--wa btn--full"
+        id="sendToWA"
+        onclick="sendToWhatsApp(null)"
+        disabled
+        aria-label="Kirim pesanan ke WhatsApp toko"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="btn-wa-note">Kirim ke WhatsApp Toko ✓</span>
+      </button>
+      <small class="cart-note">
+        Harga final dikonfirmasi oleh toko setelah pesan diterima.
+      </small>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script src="main.js"></script>
+
+</body>
+</html>
